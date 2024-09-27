@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 // auth
 import { useAuthContext } from 'src/auth/hooks';
 // routes
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 import { useRouter, useSearchParams } from 'src/routes/hooks';
 // hooks
@@ -21,7 +20,7 @@ import { useCountdownSeconds } from 'src/hooks/use-countdown';
 import { EmailInboxIcon } from 'src/assets/icons';
 // components
 import Iconify from 'src/components/iconify';
-import FormProvider, { RHFCode, RHFTextField } from 'src/components/hook-form';
+import FormProvider, { RHFCode } from 'src/components/hook-form';
 import { t } from 'i18next';
 
 // ----------------------------------------------------------------------
@@ -64,7 +63,7 @@ export default function PhoneVerifyView() {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await confirmRegister?.(data.email, data.code);
-      router.push(paths.auth.amplify.login);
+      router.push("/");
     } catch (error) {
       console.error(error);
     }
@@ -112,7 +111,7 @@ export default function PhoneVerifyView() {
 
       <Link
         component={RouterLink}
-        href={paths.auth.amplify.login}
+        href="/"
         color="inherit"
         variant="subtitle2"
         sx={{
