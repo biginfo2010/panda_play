@@ -17,6 +17,7 @@ import { _socials } from 'src/_mock';
 // components
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
+import { useLocales } from '../../locales';
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +47,7 @@ const LINKS = [
 
 export default function Footer() {
   const pathname = usePathname();
+  const { t } = useLocales();
 
   const isHome = pathname === '/';
 
@@ -63,9 +65,9 @@ export default function Footer() {
         <Logo sx={{ mb: 1, mx: 'auto' }} />
 
         <Typography variant="caption" component="div">
-          © All rights reserved
+          { t('all_rights') }
           <br /> made by
-          <Link href="https://minimals.cc/"> minimals.cc </Link>
+          <Link href="https://pandaplay.com/">  { t('app_name') } </Link>
         </Typography>
       </Container>
     </Box>
@@ -163,7 +165,7 @@ export default function Footer() {
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>
-          © 2021. All rights reserved
+          { t('all_rights') }
         </Typography>
       </Container>
     </Box>

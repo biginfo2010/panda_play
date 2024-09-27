@@ -21,6 +21,7 @@ export default function GuestGuard({ children }: Props) {
   const { authenticated } = useAuthContext();
 
   const check = useCallback(() => {
+    console.log(authenticated);
     if (authenticated) {
       router.replace(returnTo);
     }

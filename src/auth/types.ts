@@ -45,6 +45,17 @@ type CanRemove = {
   newPassword?: (email: string, code: string, password: string) => Promise<void>;
 };
 
+export type AuthContextType = CanRemove & {
+  user: AuthUserType;
+  method: string;
+  loading: boolean;
+  authenticated: boolean;
+  unauthenticated: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+};
+
 export type JWTContextType = CanRemove & {
   user: AuthUserType;
   method: string;

@@ -33,7 +33,7 @@ export default function HomeAdvertisement() {
         sx={{ color: 'common.white', mb: 5, typography: 'h2' }}
       >
         Get started with
-        <br /> Minimal kit today
+        <br /> Panda Play
       </Box>
 
       <Stack
@@ -41,23 +41,6 @@ export default function HomeAdvertisement() {
         justifyContent={{ xs: 'center', md: 'flex-start' }}
         spacing={2}
       >
-        <m.div variants={varFade().inRight}>
-          <Button
-            color="inherit"
-            size="large"
-            variant="contained"
-            target="_blank"
-            rel="noopener"
-            href={paths.minimalUI}
-            sx={{
-              color: 'grey.800',
-              bgcolor: 'common.white',
-            }}
-          >
-            Purchase Now
-          </Button>
-        </m.div>
-
         <m.div variants={varFade().inRight}>
           <Button
             color="inherit"
@@ -72,7 +55,7 @@ export default function HomeAdvertisement() {
               '&:hover': { borderColor: 'currentColor' },
             }}
           >
-            Get Free Version
+            Play Now
           </Button>
         </m.div>
       </Stack>
@@ -88,8 +71,8 @@ export default function HomeAdvertisement() {
         }}
         transition={{ duration: 4, repeat: Infinity }}
         alt="rocket"
-        src="/assets/images/home/rocket.webp"
-        sx={{ maxWidth: 460 }}
+        src="/logo/logo_smaller.png"
+        sx={{ maxWidth: 400 }}
       />
     </Stack>
   );

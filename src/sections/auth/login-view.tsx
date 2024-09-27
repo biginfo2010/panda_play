@@ -1,18 +1,13 @@
-import * as React from 'react';
-// @mui
-import { Theme, SxProps } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-// config
-import { t } from 'i18next';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
+'use client';
 
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import LoadingButton from '@mui/lab/LoadingButton';
 import Link from '@mui/material/Link';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -20,35 +15,35 @@ import InputAdornment from '@mui/material/InputAdornment';
 // routes
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
+import { useSearchParams, useRouter } from 'src/routes/hooks';
+// config
+import { PATH_AFTER_LOGIN } from 'src/config-global';
 // hooks
 import { useBoolean } from 'src/hooks/use-boolean';
+// auth
+import { useAuthContext } from 'src/auth/hooks';
 // components
 import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
+
 // ----------------------------------------------------------------------
 
-type Props = {
-  sx?: SxProps<Theme>;
-};
+export default function LoginView() {
+  const { login } = useAuthContext();
 
-export default function LoginButton({ sx }: Props) {
-  const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const searchParams = useSearchParams();
+
+  const returnTo = searchParams.get('returnTo');
+
   const password = useBoolean();
 
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-
-
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required(t("auth.email_required")).email(t("auth.valid_email")),
-    password: Yup.string().required(t("auth.pwd_required")),
+    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
+    password: Yup.string().required('Password is required'),
   });
 
   const defaultValues = {
@@ -62,41 +57,46 @@ export default function LoginButton({ sx }: Props) {
   });
 
   const {
+    reset,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      handleClose()
-      console.info('DATA', data);
+      await login?.(data.email, data.password);
+
+      router.push(returnTo || PATH_AFTER_LOGIN);
     } catch (error) {
       console.error(error);
+      reset();
+      setErrorMsg(typeof error === 'string' ? error : error.message);
     }
   });
 
   const renderHead = (
-    <Stack spacing={2} sx={{ my: 3 }}>
-      <Typography variant="h4">{t("auth.sign_app")}</Typography>
+    <Stack spacing={2} sx={{ mb: 5 }}>
+      <Typography variant="h4">Sign in to Minimal</Typography>
 
       <Stack direction="row" spacing={0.5}>
-        <Typography variant="body2">{t("auth.new_user")}</Typography>
+        <Typography variant="body2">New user?</Typography>
 
-        <Link component={RouterLink} href={paths.auth.register} variant="subtitle2">
-          {t("auth.create_account")}
+        <Link component={RouterLink} href={paths.auth.amplify.register} variant="subtitle2">
+          Create an account
         </Link>
       </Stack>
     </Stack>
   );
 
   const renderForm = (
-    <Stack spacing={2.5} sx={{ mb: 3 }}>
-      <RHFTextField name="email" label={t("auth.email")} />
+    <Stack spacing={3}>
+      {!!errorMsg && <Alert severity="error">{errorMsg}</Alert>}
+
+      <RHFTextField name="email" label="Email address" />
 
       <RHFTextField
         name="password"
-        label={t("auth.pwd")}
+        label="Password"
         type={password.value ? 'text' : 'password'}
         InputProps={{
           endAdornment: (
@@ -111,13 +111,13 @@ export default function LoginButton({ sx }: Props) {
 
       <Link
         component={RouterLink}
-        href={paths.auth.forgotPassword}
+        href={paths.auth.amplify.forgotPassword}
         variant="body2"
         color="inherit"
         underline="always"
         sx={{ alignSelf: 'flex-end' }}
       >
-        {t("auth.forgot_pwd")}
+        Forgot password?
       </Link>
 
       <LoadingButton
@@ -128,29 +128,16 @@ export default function LoginButton({ sx }: Props) {
         variant="contained"
         loading={isSubmitting}
       >
-        {t("auth.login")}
+        Login
       </LoadingButton>
     </Stack>
   );
-  return (
-    <>
-      <Button variant="outlined" sx={{ mr: 1, ...sx }} onClick={handleClickOpen} color="inherit">
-        {t("auth.login")}
-      </Button>
-      <Dialog
-        fullWidth
-        maxWidth="sm"
-        open={open}
-        onClose={handleClose}
-      >
-        <DialogContent>
-          <FormProvider methods={methods} onSubmit={onSubmit}>
-            {renderHead}
 
-            {renderForm}
-          </FormProvider>
-        </DialogContent>
-      </Dialog>
-    </>
+  return (
+    <FormProvider methods={methods} onSubmit={onSubmit}>
+      {renderHead}
+
+      {renderForm}
+    </FormProvider>
   );
 }

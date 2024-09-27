@@ -52,6 +52,13 @@ export const paths = {
   },
   // AUTH
   auth: {
+    register: `${ROOTS.AUTH}/register`,
+    registerDetail: `${ROOTS.AUTH}/register-detail`,
+    verify: `${ROOTS.AUTH}/verify`,
+    phoneVerify: `${ROOTS.AUTH}/phone-verify`,
+    newPassword: `${ROOTS.AUTH}/new-password`,
+    forgotPassword: `${ROOTS.AUTH}/forgot-password`,
+    kycVerify: `${ROOTS.AUTH}/kyc-verify`,
     amplify: {
       login: `${ROOTS.AUTH}/amplify/login`,
       verify: `${ROOTS.AUTH}/amplify/verify`,
