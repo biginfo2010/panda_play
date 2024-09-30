@@ -3,7 +3,6 @@
 // auth
 import { GuestGuard } from 'src/auth/guard';
 // components
-import SimpleLayout from 'src/layouts/simple';
 import AuthLayout from 'src/layouts/auth';
 
 // ----------------------------------------------------------------------

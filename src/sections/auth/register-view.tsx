@@ -73,7 +73,7 @@ export default function RegisterView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await register?.(data.email, data.password);
+      await register?.(data.email, data.password, "null", "null");
 
       const searchParams = new URLSearchParams({
         email: data.email,

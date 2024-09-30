@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 // routes
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 import { useRouter, useSearchParams } from 'src/routes/hooks';
 // hooks
@@ -162,7 +161,7 @@ export default function NewPasswordView() {
 
       <Link
         component={RouterLink}
-        href={paths.auth.amplify.login}
+        href="/"
         color="inherit"
         variant="subtitle2"
         sx={{

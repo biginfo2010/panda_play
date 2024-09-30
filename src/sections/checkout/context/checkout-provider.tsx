@@ -5,7 +5,6 @@ import { useEffect, useMemo, useCallback } from 'react';
 // hooks
 import { useLocalStorage, getStorage } from 'src/hooks/use-local-storage';
 // routes
-import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 // _mock
 import { PRODUCT_CHECKOUT_STEPS } from 'src/_mock/_product';
@@ -183,7 +182,7 @@ export function CheckoutProvider({ children }: Props) {
   const onReset = useCallback(() => {
     if (completed) {
       reset();
-      router.replace(paths.product.root);
+      router.replace("/");
     }
   }, [completed, reset, router]);
 

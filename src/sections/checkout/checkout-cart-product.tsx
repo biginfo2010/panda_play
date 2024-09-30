@@ -15,8 +15,6 @@ import Iconify from 'src/components/iconify';
 import { ColorPreview } from 'src/components/color-utils';
 // types
 import { ICheckoutItem } from 'src/types/checkout';
-//
-import IncrementerButton from '../product/common/incrementer-button';
 
 // ----------------------------------------------------------------------
 
@@ -56,14 +54,6 @@ export default function CheckoutCartProduct({ row, onDelete, onDecrease, onIncre
 
       <TableCell>
         <Box sx={{ width: 88, textAlign: 'right' }}>
-          <IncrementerButton
-            quantity={quantity}
-            onDecrease={onDecrease}
-            onIncrease={onIncrease}
-            disabledDecrease={quantity <= 1}
-            disabledIncrease={quantity >= available}
-          />
-
           <Typography variant="caption" component="div" sx={{ color: 'text.secondary', mt: 1 }}>
             available: {available}
           </Typography>

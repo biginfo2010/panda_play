@@ -8,7 +8,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 // hooks
 import { useResponsive } from 'src/hooks/use-responsive';
 // routes
-import { paths } from 'src/routes/paths';
 // components
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
@@ -26,10 +25,10 @@ export default function HomeLookingFor() {
       variant="outlined"
       target="_blank"
       rel="noopener"
-      href={paths.zoneUI}
+      href="/"
       endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
     >
-      Visit Zone Landing Page
+      Visit
     </Button>
   );
 
@@ -56,7 +55,7 @@ export default function HomeLookingFor() {
             mb: { md: 5 },
           }}
         >
-          Landing Page Template?
+          Financial and Market Data
         </Typography>
       </m.div>
 

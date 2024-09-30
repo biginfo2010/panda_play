@@ -50,7 +50,7 @@ export default function RegisterDetailView () {
     lastName: '',
     email: email || '',
     phoneNumber: '',
-    birthDate: '',
+    birthDate: new Date(),
     address: '',
     country: '',
     state: '',
@@ -58,6 +58,7 @@ export default function RegisterDetailView () {
     zipCode: ''
   }
 
+  // @ts-ignore
   const methods = useForm({
     resolver: yupResolver(NewUserSchema),
     defaultValues,
@@ -71,7 +72,12 @@ export default function RegisterDetailView () {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      router.push(paths.auth.phoneVerify);
+      const searchParamsPost = new URLSearchParams({
+        email: data.email,
+      }).toString();
+      const href = `${paths.auth.phoneVerify}?${searchParamsPost}`;
+
+      router.push(href);
       console.info('DATA', data);
     } catch (error) {
       console.error(error);

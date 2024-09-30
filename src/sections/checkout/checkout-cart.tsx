@@ -5,7 +5,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 // routes
-import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 import { RouterLink } from 'src/routes/components';
@@ -57,7 +56,7 @@ export default function CheckoutCart() {
 
         <Button
           component={RouterLink}
-          href={paths.product.root}
+          href="/"
           color="inherit"
           startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
         >

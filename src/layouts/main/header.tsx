@@ -12,8 +12,6 @@ import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
 // theme
 import { bgBlur } from 'src/theme/css';
-// routes
-import { paths } from 'src/routes/paths';
 // components
 import Logo from 'src/components/logo';
 //
@@ -66,7 +64,7 @@ export default function Header() {
             }}
             badgeContent={
               <Link
-                href={paths.changelog}
+                href="/"
                 target="_blank"
                 rel="noopener"
                 underline="none"

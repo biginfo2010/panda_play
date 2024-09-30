@@ -20,8 +20,9 @@ import { useCountdownSeconds } from 'src/hooks/use-countdown';
 import { EmailInboxIcon } from 'src/assets/icons';
 // components
 import Iconify from 'src/components/iconify';
-import FormProvider, { RHFCode } from 'src/components/hook-form';
+import FormProvider, { RHFCode, RHFTextField } from 'src/components/hook-form';
 import { t } from 'i18next';
+import { paths } from '../../routes/paths';
 
 // ----------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ export default function PhoneVerifyView() {
 
   const email = searchParams.get('email');
 
-  const { confirmRegister, resendCodeRegister } = useAuthContext();
+  const { confirmRegisterDetail, resendCodeRegister } = useAuthContext();
 
   const { countdown, counting, startCountdown } = useCountdownSeconds(60);
 
@@ -60,10 +61,19 @@ export default function PhoneVerifyView() {
 
   const values = watch();
 
+  // const onSubmit = () => {
+  //   router.push(paths.auth.kycVerify);
+  // };
+
+
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await confirmRegister?.(data.email, data.code);
-      router.push("/");
+      await confirmRegisterDetail?.(data.email, data.code);
+      const searchParamsPost = new URLSearchParams({
+        email: data.email,
+      }).toString();
+      const href = `${paths.auth.kycVerify}?${searchParamsPost}`;
+      router.push(href);
     } catch (error) {
       console.error(error);
     }
@@ -80,6 +90,13 @@ export default function PhoneVerifyView() {
 
   const renderForm = (
     <Stack spacing={3} alignItems="center">
+      <RHFTextField
+        name="email"
+        label={t('auth.email')}
+        disabled
+        InputLabelProps={{ shrink: true }}
+      />
+
       <RHFCode name="code" />
 
       <LoadingButton

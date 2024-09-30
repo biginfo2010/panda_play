@@ -40,6 +40,7 @@ type CanRemove = {
   loginWithRedirect?: (options?: RedirectLoginOptions) => Promise<void>;
   //
   confirmRegister?: (email: string, code: string) => Promise<void>;
+  confirmRegisterDetail?: (email: string, code: string) => Promise<void>;
   forgotPassword?: (email: string) => Promise<void>;
   resendCodeRegister?: (email: string) => Promise<void>;
   newPassword?: (email: string, code: string, password: string) => Promise<void>;
@@ -52,7 +53,7 @@ export type AuthContextType = CanRemove & {
   authenticated: boolean;
   unauthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
   logout: () => Promise<void>;
 };
 
@@ -97,6 +98,7 @@ export type AmplifyContextType = CanRemove & {
   ) => Promise<unknown>;
   logout: () => Promise<unknown>;
   confirmRegister: (email: string, code: string) => Promise<void>;
+  confirmRegisterDetail: (email: string, code: string) => Promise<void>;
   forgotPassword: (email: string) => Promise<void>;
   resendCodeRegister: (email: string) => Promise<void>;
   newPassword: (email: string, code: string, password: string) => Promise<void>;

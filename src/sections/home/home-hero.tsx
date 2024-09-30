@@ -5,10 +5,7 @@ import { styled, alpha, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
 
-// hooks
-import { useResponsive } from 'src/hooks/use-responsive';
 // theme
 import { secondaryFont } from 'src/theme/typography';
 import { textGradient, bgGradient, bgBlur } from 'src/theme/css';
@@ -18,8 +15,7 @@ import { HEADER } from 'src/layouts/config-layout';
 import { MotionContainer, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
-
-const StyledRoot = styled('div')(({ theme }) => ({
+styled('div')(({ theme }) => ({
   ...bgGradient({
     color: alpha(theme.palette.background.default, theme.palette.mode === 'light' ? 0.9 : 0.94),
     imgUrl: '/assets/background/overlay_3.jpg',
@@ -33,8 +29,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
     position: 'fixed',
   },
 }));
-
-const StyledWrapper = styled('div')(({ theme }) => ({
+styled('div')(({ theme }) => ({
   height: '100%',
   overflow: 'hidden',
   position: 'relative',
@@ -42,7 +37,6 @@ const StyledWrapper = styled('div')(({ theme }) => ({
     marginTop: HEADER.H_DESKTOP_OFFSET,
   },
 }));
-
 const StyledTextGradient = styled(m.h1)(({ theme }) => ({
   ...textGradient(
     `300deg, ${theme.palette.primary.main} 0%, ${theme.palette.warning.main} 25%, ${theme.palette.primary.main} 50%, ${theme.palette.warning.main} 75%, ${theme.palette.primary.main} 100%`
@@ -60,8 +54,7 @@ const StyledTextGradient = styled(m.h1)(({ theme }) => ({
     fontSize: `${96 / 16}rem`,
   },
 }));
-
-const StyledEllipseTop = styled('div')(({ theme }) => ({
+styled('div')(({ theme }) => ({
   top: -80,
   width: 480,
   right: -80,
@@ -72,8 +65,7 @@ const StyledEllipseTop = styled('div')(({ theme }) => ({
   WebkitFilter: 'blur(100px)',
   backgroundColor: alpha(theme.palette.primary.darker, 0.12),
 }));
-
-const StyledEllipseBottom = styled('div')(({ theme }) => ({
+styled('div')(({ theme }) => ({
   height: 400,
   bottom: -200,
   left: '10%',
@@ -84,13 +76,11 @@ const StyledEllipseBottom = styled('div')(({ theme }) => ({
   WebkitFilter: 'blur(100px)',
   backgroundColor: alpha(theme.palette.primary.darker, 0.12),
 }));
-
 type StyledPolygonProps = {
   opacity?: number;
   anchor?: 'left' | 'right';
 };
-
-const StyledPolygon = styled('div')<StyledPolygonProps>(
+styled('div')<StyledPolygonProps>(
   ({ opacity = 1, anchor = 'left', theme }) => ({
     ...bgBlur({
       opacity,
@@ -117,11 +107,9 @@ const StyledPolygon = styled('div')<StyledPolygonProps>(
     }),
   })
 );
-
 // ----------------------------------------------------------------------
 
 export default function HomeHero() {
-  const mdUp = useResponsive('up', 'md');
 
   const theme = useTheme();
 
@@ -159,10 +147,7 @@ export default function HomeHero() {
   } as const;
 
   const opacity = 1 - percent / 100;
-
-  const hide = percent > 120;
-
-  const renderDescription = (
+  (
     <Stack
       alignItems="center"
       justifyContent="center"
@@ -186,13 +171,12 @@ export default function HomeHero() {
             repeat: Infinity,
           }}
         >
-          Panda Play
+          Panda World
         </StyledTextGradient>
       </m.div>
     </Stack>
   );
-
-  const renderSlides = (
+  (
     <Stack
       direction="row"
       alignItems="flex-start"
@@ -272,51 +256,33 @@ export default function HomeHero() {
       </Stack>
     </Stack>
   );
-
-  const renderPolygons = (
-    <>
-      <StyledPolygon />
-      <StyledPolygon anchor="right" opacity={0.48} />
-      <StyledPolygon anchor="right" opacity={0.48} sx={{ height: 48, zIndex: 10 }} />
-      <StyledPolygon anchor="right" sx={{ zIndex: 11, height: 24 }} />
-    </>
-  );
-
-  const renderEllipses = (
-    <>
-      {mdUp && <StyledEllipseTop />}
-      <StyledEllipseBottom />
-    </>
-  );
-
   return (
-    <>
-      <StyledRoot
-        ref={heroRef}
+    <Box
         sx={{
-          ...(hide && {
-            opacity: 0,
+          ...bgGradient({
+            color: alpha(theme.palette.grey[900], 0.01),
+            imgUrl: '/assets/images/home/hero/new-banner.png',
           }),
+          height: { md: 800 },
+          py: { xs: 10, md: 0 },
+          overflow: 'hidden',
+          position: 'relative',
+          backgroundPosition: 'top'
         }}
       >
-        <StyledWrapper>
-          <Container component={MotionContainer} sx={{ height: 1 }}>
-            <Grid container columnSpacing={{ md: 10 }} sx={{ height: 1 }}>
-              <Grid xs={12} md={6}>
-                {renderDescription}
-              </Grid>
-
-              {mdUp && <Grid md={6}>{renderSlides}</Grid>}
-            </Grid>
-          </Container>
-
-          {renderEllipses}
-        </StyledWrapper>
-      </StyledRoot>
-
-      {mdUp && renderPolygons}
-
-      <Box sx={{ height: { md: '100vh' } }} />
-    </>
+        <Container component={MotionContainer}>
+          <Box
+            sx={{
+              bottom: { md: 80 },
+              position: { md: 'absolute' },
+              textAlign: { xs: 'center', md: 'unset' },
+            }}
+          >
+            <m.div variants={varFade().in}>
+              Panda
+            </m.div>
+          </Box>
+        </Container>
+      </Box>
   );
 }

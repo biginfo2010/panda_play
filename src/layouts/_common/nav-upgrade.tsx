@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 // hooks
 import { useMockedUser } from 'src/hooks/use-mocked-user';
 // routes
-import { paths } from 'src/routes/paths';
 // locales
 import { useLocales } from 'src/locales';
 // components
@@ -57,7 +56,7 @@ export default function NavUpgrade() {
           </Typography>
         </Stack>
 
-        <Button variant="contained" href={paths.minimalUI} target="_blank" rel="noopener">
+        <Button variant="contained" href="/" target="_blank" rel="noopener">
           {t('upgrade_to_pro')}
         </Button>
       </Stack>

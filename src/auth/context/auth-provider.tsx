@@ -6,7 +6,7 @@ import axios, { endpoints } from 'src/utils/axios';
 //
 import { AuthContext } from './auth-context';
 import { isValidToken, setSession } from './utils';
-import { ActionMapType, AuthStateType, AuthUserType } from '../../types';
+import { ActionMapType, AuthStateType, AuthUserType } from '../types';
 
 // ----------------------------------------------------------------------
 
@@ -129,14 +129,21 @@ export function AuthProvider({ children }: Props) {
 
   // LOGIN
   const login = useCallback(async (email: string, password: string) => {
-    const data = {
-      email,
-      password,
-    };
+    // const data = {
+    //   email,
+    //   password,
+    // };
 
-    const res = await axios.post(endpoints.auth.login, data);
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const { accessToken, user } = res.data;
+    // const res = await axios.post(endpoints.auth.login, data);
+
+    // const { accessToken, user } = res.data;
+    const accessToken = "accessToken";
+    const user = {
+      email: "test@test.com",
+      id: "1"
+    }
 
     setSession(accessToken);
 
@@ -201,7 +208,6 @@ export function AuthProvider({ children }: Props) {
       loading: status === 'loading',
       authenticated: status === 'authenticated',
       unauthenticated: status === 'unauthenticated',
-      //
       login,
       register,
       logout,

@@ -6,14 +6,12 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack, { StackProps } from '@mui/material/Stack';
 // hooks
 import { useResponsive } from 'src/hooks/use-responsive';
 // routes
-import { paths } from 'src/routes/paths';
 // _mock
 import { _homePlans } from 'src/_mock';
 // components
@@ -208,16 +206,6 @@ function PlanCard({ plan, sx, ...other }: PlanCardProps) {
         </Box>
       </Stack>
 
-      {standard ? (
-        <Box component="img" src={icons[1]} sx={{ width: 20, height: 20 }} />
-      ) : (
-        <Stack direction="row" spacing={2}>
-          {icons.map((icon) => (
-            <Box component="img" key={icon} src={icon} sx={{ width: 20, height: 20 }} />
-          ))}
-        </Stack>
-      )}
-
       <Stack spacing={2.5}>
         {commons.map((option) => (
           <Stack key={option} spacing={1} direction="row" alignItems="center">
@@ -225,31 +213,6 @@ function PlanCard({ plan, sx, ...other }: PlanCardProps) {
             <Typography variant="body2">{option}</Typography>
           </Stack>
         ))}
-
-        <Divider sx={{ borderStyle: 'dashed' }} />
-
-        {options.map((option, optionIndex) => {
-          const disabled =
-            (standard && optionIndex === 1) ||
-            (standard && optionIndex === 2) ||
-            (standard && optionIndex === 3) ||
-            (plus && optionIndex === 3);
-
-          return (
-            <Stack
-              spacing={1}
-              direction="row"
-              alignItems="center"
-              sx={{
-                ...(disabled && { color: 'text.disabled' }),
-              }}
-              key={option}
-            >
-              <Iconify icon={disabled ? 'mingcute:close-line' : 'eva:checkmark-fill'} width={16} />
-              <Typography variant="body2">{option}</Typography>
-            </Stack>
-          );
-        })}
       </Stack>
 
       <Stack alignItems="flex-end">
@@ -258,7 +221,7 @@ function PlanCard({ plan, sx, ...other }: PlanCardProps) {
           size="small"
           target="_blank"
           rel="noopener"
-          href={paths.minimalUI}
+          href="/"
           endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
         >
           Learn more

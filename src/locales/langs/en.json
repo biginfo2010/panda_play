@@ -51,7 +51,7 @@
   "demo": {
     "title": "English"
   },
-  "app_name": "Panda Play",
+  "app_name": "Panda World",
   "all_rights": "© All rights reserved",
   "auth": {
     "login": "Login",
@@ -62,7 +62,7 @@
     "register": "Register",
     "create_account": "Create an account",
     "new_user": "New user?",
-    "sign_app": "Sign in Panda Play",
+    "sign_app": "Sign in Panda World",
     "email_required": "Email is required",
     "valid_email": "Email must be a valid email address",
     "pwd_required": "Password is required",
@@ -104,6 +104,8 @@
     "zip_required": "Zipcode is required",
     "city_required": "City is required",
     "state_required": "State is required",
-    "country_required": "Country is required"
+    "country_required": "Country is required",
+    "kyc_form": "KYC Submission Form",
+    "submit_kyc": "Submit KYC"
   }
 }

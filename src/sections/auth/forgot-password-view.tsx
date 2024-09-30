@@ -76,7 +76,7 @@ export default function ForgotPasswordView() {
 
       <Link
         component={RouterLink}
-        href={paths.auth.amplify.login}
+        href="/"
         color="inherit"
         variant="subtitle2"
         sx={{

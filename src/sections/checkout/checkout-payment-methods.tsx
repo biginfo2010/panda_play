@@ -15,8 +15,6 @@ import { useBoolean } from 'src/hooks/use-boolean';
 import Iconify from 'src/components/iconify';
 // types
 import { ICheckoutCardOption, ICheckoutPaymentOption } from 'src/types/checkout';
-//
-import PaymentNewCardDialog from '../payment/payment-new-card-dialog';
 
 // ----------------------------------------------------------------------
 
@@ -31,8 +29,7 @@ export default function CheckoutPaymentMethods({ options, cardOptions, ...other 
   const newCard = useBoolean();
 
   return (
-    <>
-      <Card {...other}>
+    <Card {...other}>
         <CardHeader title="Payment" />
 
         <Controller
@@ -63,9 +60,6 @@ export default function CheckoutPaymentMethods({ options, cardOptions, ...other 
           )}
         />
       </Card>
-
-      <PaymentNewCardDialog open={newCard.value} onClose={newCard.onFalse} />
-    </>
   );
 }
 

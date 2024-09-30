@@ -11,7 +11,6 @@ import { useResponsive } from 'src/hooks/use-responsive';
 // theme
 import { textGradient, bgGradient } from 'src/theme/css';
 // routes
-import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
@@ -42,7 +41,7 @@ export default function HomeForDesigner() {
             ),
           }}
         >
-          For Designer
+          ICO Schedule and Initiatives
         </Typography>
       </m.div>
 
@@ -54,9 +53,9 @@ export default function HomeForDesigner() {
           endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
           target="_blank"
           rel="noopener"
-          href={paths.figma}
+          href="/"
         >
-          Figma Workspace
+          Road Map
         </Button>
       </m.div>
     </Box>

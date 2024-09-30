@@ -10,7 +10,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 // routes
 import { paths } from 'src/routes/paths';
-import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 // _mock
 import { _socials } from 'src/_mock';
@@ -35,6 +34,7 @@ const LINKS = [
     children: [
       { name: 'Terms and Condition', href: '#' },
       { name: 'Privacy Policy', href: '#' },
+      { name: 'White Paper', href: '#' },
     ],
   },
   {
@@ -46,34 +46,9 @@ const LINKS = [
 // ----------------------------------------------------------------------
 
 export default function Footer() {
-  const pathname = usePathname();
   const { t } = useLocales();
 
-  const isHome = pathname === '/';
-
-  const simpleFooter = (
-    <Box
-      component="footer"
-      sx={{
-        py: 5,
-        textAlign: 'center',
-        position: 'relative',
-        bgcolor: 'background.default',
-      }}
-    >
-      <Container>
-        <Logo sx={{ mb: 1, mx: 'auto' }} />
-
-        <Typography variant="caption" component="div">
-          { t('all_rights') }
-          <br /> made by
-          <Link href="https://pandaplay.com/">  { t('app_name') } </Link>
-        </Typography>
-      </Container>
-    </Box>
-  );
-
-  const mainFooter = (
+  return (
     <Box
       component="footer"
       sx={{
@@ -165,11 +140,9 @@ export default function Footer() {
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>
-          { t('all_rights') }
+          {t('all_rights')}
         </Typography>
       </Container>
     </Box>
   );
-
-  return isHome ? simpleFooter : mainFooter;
 }

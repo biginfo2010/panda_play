@@ -14,18 +14,18 @@ import { MotionViewport, varFade } from 'src/components/animate';
 const CARDS = [
   {
     icon: ' /assets/icons/home/ic_make_brand.svg',
-    title: 'Branding',
+    title: 'Account Application Program',
     description: 'Consistent design makes it easy to brand your own.',
   },
   {
     icon: ' /assets/icons/home/ic_design.svg',
-    title: 'UI & UX Design',
+    title: 'Vesting Program',
     description:
       'The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.',
   },
   {
     icon: ' /assets/icons/home/ic_development.svg',
-    title: 'Development',
+    title: 'Staking Program',
     description: 'Easy to customize and extend, saving you time and money.',
   },
 ];
@@ -49,7 +49,7 @@ export default function HomeMinimal() {
       >
         <m.div variants={varFade().inDown}>
           <Typography variant="h2">
-            Welcome to  <br /> Panda Play
+            Welcome to  <br /> Panda World
           </Typography>
         </m.div>
       </Stack>

@@ -3,51 +3,42 @@ import { m } from 'framer-motion';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 // components
 import Image from 'src/components/image';
-import { useSettingsContext } from 'src/components/settings';
 import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
 export default function HomeDarkMode() {
-  const settings = useSettingsContext();
 
   const renderDescription = (
     <Stack alignItems="center" spacing={3}>
       <m.div variants={varFade().inUp}>
         <Typography component="div" variant="overline" sx={{ color: 'primary.main' }}>
-          Easy switch between styles.
+          Panda World
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
         <Typography variant="h2" sx={{ color: 'common.white' }}>
-          Dark mode
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          What's Panda World
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
         <Typography sx={{ color: 'grey.500' }}>
-          A dark theme that feels easier on the eyes.
+          Panda World is a wholly owned subsidiary of Crypto World Entertainment. Panda World is poised to revolutionize the gaming industry by merging play-to-earn (P2E) and play and earn gaming with charitable contributions and environmental advocacy. Our innovative approach not only provides exciting gaming experiences for users but also engages them in meaningful ways to support vital causes.
         </Typography>
-      </m.div>
-
-      <m.div variants={varFade().inUp}>
-        <Switch
-          checked={settings.themeMode === 'dark'}
-          onClick={() =>
-            settings.onUpdate('themeMode', settings.themeMode === 'light' ? 'dark' : 'light')
-          }
-        />
+        <Typography sx={{ color: 'grey.500' }}>
+          Panda World will revolutionize gaming and philanthropy with innovative opportunities of achieving financial success for both the savvy and inexperienced crypto currency investor (providing both short-term and long-term strategies and goals).
+        </Typography>
       </m.div>
     </Stack>
   );
-
-  const renderImg = (
+  (
     <m.div variants={varFade().inUp}>
       <Image
         alt="darkmode"
@@ -60,7 +51,6 @@ export default function HomeDarkMode() {
       />
     </m.div>
   );
-
   return (
     <Box
       sx={{
@@ -72,8 +62,6 @@ export default function HomeDarkMode() {
     >
       <Container component={MotionViewport}>
         {renderDescription}
-
-        {renderImg}
       </Container>
     </Box>
   );

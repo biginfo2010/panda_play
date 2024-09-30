@@ -30,9 +30,8 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
       >
         <Image
           src={logoImg}   // Use the imported image
-          alt="Panda Play"
-          width={40}
-          height={40}
+          alt="Panda World"
+          style={{ width: '100%', height: '100%', position: 'relative' }}
         />
       </Box>
     );

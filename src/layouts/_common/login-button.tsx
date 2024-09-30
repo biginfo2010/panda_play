@@ -25,6 +25,9 @@ import { useBoolean } from 'src/hooks/use-boolean';
 // components
 import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
+import { useRouter } from 'src/routes/hooks';
+// auth
+import { useAuthContext } from 'src/auth/hooks';
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -34,7 +37,9 @@ type Props = {
 export default function LoginButton({ sx }: Props) {
   const [open, setOpen] = React.useState(false);
   const password = useBoolean();
+  const router = useRouter();
 
+  const { login } = useAuthContext();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,9 +73,9 @@ export default function LoginButton({ sx }: Props) {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      handleClose()
-      console.info('DATA', data);
+      await login?.(data.email, data.password);
+      // handleClose()
+      router.push(paths.dashboard.root);
     } catch (error) {
       console.error(error);
     }

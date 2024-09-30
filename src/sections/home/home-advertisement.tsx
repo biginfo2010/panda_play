@@ -7,8 +7,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 // theme
 import { bgGradient } from 'src/theme/css';
-// routes
-import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
@@ -33,7 +31,7 @@ export default function HomeAdvertisement() {
         sx={{ color: 'common.white', mb: 5, typography: 'h2' }}
       >
         Get started with
-        <br /> Panda Play
+        <br /> Panda World
       </Box>
 
       <Stack
@@ -48,7 +46,7 @@ export default function HomeAdvertisement() {
             variant="outlined"
             target="_blank"
             rel="noopener"
-            href={paths.freeUI}
+            href="/"
             endIcon={<Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />}
             sx={{
               color: 'common.white',
