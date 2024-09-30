@@ -73,8 +73,8 @@ export default function RegisterView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await register?.(data.email, data.password, "null", "null");
-
+      // await register?.(data.email, data.password, "null", "null");
+      await new Promise((resolve) => setTimeout(resolve, 500));
       const searchParams = new URLSearchParams({
         email: data.email,
       }).toString();

@@ -68,7 +68,8 @@ export default function PhoneVerifyView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await confirmRegisterDetail?.(data.email, data.code);
+      // await confirmRegisterDetail?.(data.email, data.code);
+      await new Promise((resolve) => setTimeout(resolve, 500));
       const searchParamsPost = new URLSearchParams({
         email: data.email,
       }).toString();

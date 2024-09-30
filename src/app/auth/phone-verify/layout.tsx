@@ -13,8 +13,8 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <GuestGuard>
+    <>
       <CompactLayout>{children}</CompactLayout>
-    </GuestGuard>
+    </>
   );
 }

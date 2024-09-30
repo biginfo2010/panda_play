@@ -76,7 +76,7 @@ export default function KycVerifyView() {
   });
 
   const defaultValues = {
-    code: '',
+    code: '123456',
     email: email || '',
     coverUrl: null,
   };
@@ -115,8 +115,8 @@ export default function KycVerifyView() {
   }, [setValue]);
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await confirmRegister?.(data.email, data.code);
-
+      // await confirmRegister?.(data.email, data.code);
+      await new Promise((resolve) => setTimeout(resolve, 500));
       // Here you would handle form submission, such as sending the images/files to a server
       console.log("Driver License:", licenseImage);
       console.log("Selfie:", addressDocument);

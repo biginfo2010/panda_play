@@ -13,10 +13,10 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <GuestGuard>
+    <>
       <AuthLayout>
         {children}
       </AuthLayout>
-    </GuestGuard>
+    </>
   );
 }
