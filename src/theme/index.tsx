@@ -44,9 +44,9 @@ export default function ThemeProvider({ children }: Props) {
 
   const baseOption = useMemo(
     () => ({
-      palette: palette('light'),
-      shadows: shadows('light'),
-      customShadows: customShadows('light'),
+      palette: palette('dark'),
+      shadows: shadows('dark'),
+      customShadows: customShadows('dark'),
       typography,
       shape: { borderRadius: 8 },
     }),

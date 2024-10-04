@@ -53,53 +53,6 @@ export default function HomePricing() {
 
   const renderContent = (
     <>
-      {mdUp ? (
-        <Box
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-          sx={{
-            borderRadius: 2,
-            border: (theme) => `dashed 1px ${theme.palette.divider}`,
-          }}
-        >
-          {_homePlans.map((plan) => (
-            <m.div key={plan.license} variants={varFade().in}>
-              <PlanCard key={plan.license} plan={plan} />
-            </m.div>
-          ))}
-        </Box>
-      ) : (
-        <>
-          <Stack alignItems="center" sx={{ mb: 5 }}>
-            <Tabs value={currentTab} onChange={handleChangeTab}>
-              {_homePlans.map((tab) => (
-                <Tab key={tab.license} value={tab.license} label={tab.license} />
-              ))}
-            </Tabs>
-          </Stack>
-
-          <Box
-            sx={{
-              borderRadius: 2,
-              border: (theme) => `dashed 1px ${theme.palette.divider}`,
-            }}
-          >
-            {_homePlans.map(
-              (tab) =>
-                tab.license === currentTab && (
-                  <PlanCard
-                    key={tab.license}
-                    plan={tab}
-                    sx={{
-                      borderLeft: (theme) => `dashed 1px ${theme.palette.divider}`,
-                    }}
-                  />
-                )
-            )}
-          </Box>
-        </>
-      )}
-
       <m.div variants={varFade().in}>
         <Box
           sx={{

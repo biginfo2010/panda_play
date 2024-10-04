@@ -13,20 +13,24 @@ import { MotionViewport, varFade } from 'src/components/animate';
 
 const CARDS = [
   {
-    icon: ' /assets/icons/home/ic_make_brand.svg',
+    icon: ' /assets/icons/home/ic_make_brand.webp',
     title: 'Account Application Program',
     description: 'Consistent design makes it easy to brand your own.',
+    bgColor: '#3b8ede',
   },
   {
-    icon: ' /assets/icons/home/ic_design.svg',
+    icon: ' /assets/icons/home/ic_design.webp',
     title: 'Vesting Program',
     description:
       'The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.',
+    bgColor: '#ffa400',
+
   },
   {
-    icon: ' /assets/icons/home/ic_development.svg',
+    icon: ' /assets/icons/home/ic_development.webp',
     title: 'Staking Program',
     description: 'Easy to customize and extend, saving you time and money.',
+    bgColor: '#c3d600',
   },
 ];
 
@@ -69,8 +73,8 @@ export default function HomeMinimal() {
               sx={{
                 textAlign: 'center',
                 boxShadow: { md: 'none' },
-                bgcolor: 'background.default',
-                p: (theme) => theme.spacing(10, 5),
+                backgroundColor: card.bgColor,
+                p: (theme) => theme.spacing(2, 2),
                 ...(index === 1 && {
                   boxShadow: (theme) => ({
                     md: `-40px 40px 80px ${
@@ -86,14 +90,14 @@ export default function HomeMinimal() {
                 component="img"
                 src={card.icon}
                 alt={card.title}
-                sx={{ mx: 'auto', width: 48, height: 48 }}
+                sx={{ mx: 'auto', width: 300, height: 300, borderRadius: 1 }}
               />
 
-              <Typography variant="h5" sx={{ mt: 8, mb: 2 }}>
+              <Typography variant="h5" sx={{ mt: 4, mb: 3 }}>
                 {card.title}
               </Typography>
 
-              <Typography sx={{ color: 'text.secondary' }}>{card.description}</Typography>
+              <Typography>{card.description}</Typography>
             </Card>
           </m.div>
         ))}

@@ -22,7 +22,7 @@ import { useLocales } from '../../locales';
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'Panda World',
     children: [
       { name: 'About us', href: paths.about },
       { name: 'Contact us', href: paths.contact },
@@ -39,7 +39,7 @@ const LINKS = [
   },
   {
     headline: 'Contact',
-    children: [{ name: 'support@minimals.cc', href: '#' }],
+    children: [{ name: 'support@panda.world', href: '#' }],
   },
 ];
 
@@ -60,12 +60,12 @@ export default function Footer() {
 
       <Container
         sx={{
-          pt: 10,
-          pb: 5,
+          pt: 5,
+          pb: 3,
           textAlign: { xs: 'center', md: 'unset' },
         }}
       >
-        <Logo sx={{ mb: 3 }} />
+        <Logo sx={{ mb: 2 }} />
 
         <Grid
           container
@@ -75,22 +75,11 @@ export default function Footer() {
           }}
         >
           <Grid xs={8} md={3}>
-            <Typography
-              variant="body2"
-              sx={{
-                maxWidth: 270,
-                mx: { xs: 'auto', md: 'unset' },
-              }}
-            >
-              The starting point for your next project with Minimal UI Kit, built on the newest
-              version of Material-UI ©, ready to be customized to your style.
-            </Typography>
-
             <Stack
               direction="row"
               justifyContent={{ xs: 'center', md: 'flex-start' }}
               sx={{
-                mt: 3,
+                mt: 1,
                 mb: { xs: 5, md: 0 },
               }}
             >
@@ -139,7 +128,7 @@ export default function Footer() {
           </Grid>
         </Grid>
 
-        <Typography variant="body2" sx={{ mt: 10 }}>
+        <Typography variant="body2" sx={{ mt: 5 }}>
           {t('all_rights')}
         </Typography>
       </Container>

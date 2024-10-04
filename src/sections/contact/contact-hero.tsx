@@ -44,10 +44,10 @@ export default function ContactHero() {
     <Box
       sx={{
         ...bgGradient({
-          color: alpha(theme.palette.grey[900], 0.8),
+          color: alpha(theme.palette.grey[900], 0.4),
           imgUrl: '/assets/images/contact/hero.jpg',
         }),
-        height: { md: 560 },
+        height: { md: 650 },
         py: { xs: 10, md: 0 },
         overflow: 'hidden',
         position: 'relative',

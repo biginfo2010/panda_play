@@ -139,7 +139,7 @@ export default function LoginButton({ sx }: Props) {
   );
   return (
     <>
-      <Button variant="outlined" sx={{ mr: 1, ...sx }} onClick={handleClickOpen} color="inherit">
+      <Button variant="outlined" sx={{ ml: 6, mr: 2, ...sx }} onClick={handleClickOpen} size="large" color="inherit">
         {t("auth.login")}
       </Button>
       <Dialog

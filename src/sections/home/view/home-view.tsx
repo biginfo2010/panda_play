@@ -2,7 +2,7 @@
 
 import { useScroll } from 'framer-motion';
 // @mui
-import { styled } from '@mui/material/styles';
+import { alpha, styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 // layouts
 import MainLayout from 'src/layouts/main';
@@ -14,39 +14,12 @@ import HomeMinimal from '../home-minimal';
 import HomePricing from '../home-pricing';
 import HomeDarkMode from '../home-dark-mode';
 import HomeLookingFor from '../home-looking-for';
-import HomeForDesigner from '../home-for-designer';
-import HomeColorPresets from '../home-color-presets';
 import HomeAdvertisement from '../home-advertisement';
-import HomeCleanInterfaces from '../home-clean-interfaces';
-import HomeHugePackElements from '../home-hugepack-elements';
+import { bgGradient } from '../../../theme/css';
 
-
-type StyledPolygonProps = {
-  anchor?: 'top' | 'bottom';
-};
-
-const StyledPolygon = styled('div')<StyledPolygonProps>(({ anchor = 'top', theme }) => ({
-  left: 0,
-  zIndex: 9,
-  height: 80,
-  width: '100%',
-  position: 'absolute',
-  clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
-  backgroundColor: theme.palette.background.default,
-  display: 'block',
-  lineHeight: 0,
-  ...(anchor === 'top' && {
-    top: -1,
-    transform: 'scale(-1, -1)',
-  }),
-  ...(anchor === 'bottom' && {
-    bottom: -1,
-    backgroundColor: theme.palette.grey[900],
-  }),
-}));
 export default function HomeView() {
   const { scrollYProgress } = useScroll();
-
+  const theme = useTheme();
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
@@ -55,26 +28,64 @@ export default function HomeView() {
 
       <Box
         sx={{
-          overflow: 'hidden',
+          ...bgGradient({
+            color: alpha(theme.palette.grey[900], 0.3),
+            imgUrl: '/assets/images/home/hero/background-1.png',
+          }),
+          overflow: 'initial',
           position: 'relative',
-          bgcolor: 'background.default',
+          backgroundPosition: 'top'
         }}
       >
+        <div style={{
+          display: 'block',
+          position: 'absolute',
+          width: '250px',
+          height: '250px',
+          left: 'calc(50% - 125px)',
+          top: '-250px',
+          zIndex: 5,
+          backgroundImage: "url('/assets/images/home/hero/icon.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'bottom',
+        }}
+             className="app_waveLayerBlock_2mLTW" />
+        <div style={{
+          display: 'block',
+          position: 'absolute',
+          width: '100%',
+          height: '190px',
+          left: 0,
+          top: '-190px',
+          zIndex: 4,
+          backgroundImage: "url('/assets/images/home/hero/wave-new.svg')",
+          backgroundSize: 'initial',
+          backgroundPosition: 'bottom',
+        }}
+             className="app_waveLayerBlock_2mLTW" />
+        <HomeDarkMode />
         <HomeMinimal />
 
-        <Box sx={{ position: 'relative' }}>
-          <StyledPolygon />
-          <HomeForDesigner />
-          <StyledPolygon anchor="bottom" />
-        </Box>
 
-        <HomeDarkMode />
-
-        <HomePricing />
+        {/* <HomePricing /> */}
 
         <HomeLookingFor />
         <HomeAdvertisement />
+        <div
+          style={{
+            height: '200px',
+            width: '100%',
+            position: 'relative',
+            backgroundImage: "url('/assets/images/home/hero/footer-banner.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center 0",
+            backgroundSize: 'cover',
+            marginBottom: '-5px',
+            marginTop: '50px'
+          }}
+          className="overflow-hidden footer_footerTopPhoto_3grmz" />
       </Box>
+
     </MainLayout>
   );
 }

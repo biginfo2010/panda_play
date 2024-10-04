@@ -29,7 +29,7 @@ export const ListItem = styled(ListItemButton, {
   };
 
   return {
-    ...theme.typography.subtitle2,
+    ...theme.typography.h5,
     padding: 0,
     height: '100%',
     color: theme.palette.text.primary,

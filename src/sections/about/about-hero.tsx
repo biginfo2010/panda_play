@@ -13,7 +13,7 @@ export default function AboutHero() {
   return (
     <Box
       sx={{
-        height: { md: 560 },
+        height: { md: 650 },
         py: { xs: 10, md: 0 },
         overflow: 'hidden',
         position: 'relative',

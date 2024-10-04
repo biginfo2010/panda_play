@@ -52,6 +52,11 @@
     "title": "English"
   },
   "app_name": "Panda World",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "roadmap": "Road Map",
+  "games": "Games",
   "all_rights": "© All rights reserved",
   "auth": {
     "login": "Login",

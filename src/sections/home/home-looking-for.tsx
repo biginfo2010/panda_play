@@ -71,11 +71,11 @@ export default function HomeLookingFor() {
       }}
     >
       <Grid container alignItems="center" justifyContent="space-between" spacing={{ xs: 5, md: 0 }}>
-        <Grid xs={12} md={4}>
+        <Grid xs={12} md={6}>
           {renderDescription}
         </Grid>
 
-        <Grid xs={12} md={7}>
+        <Grid xs={12} md={6}>
           <m.div variants={varFade().inUp}>
             <Image disabledEffect alt="rocket" src="/assets/images/home/zone_landing.webp" />
           </m.div>

@@ -1,18 +1,44 @@
-import { m, useScroll } from 'framer-motion';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { m, MotionProps, useScroll } from 'framer-motion';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 // @mui
 import { styled, alpha, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Box, { BoxProps } from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
 // theme
-import { secondaryFont } from 'src/theme/typography';
-import { textGradient, bgGradient, bgBlur } from 'src/theme/css';
+import { bgGradient, bgBlur } from 'src/theme/css';
 // layouts
 import { HEADER } from 'src/layouts/config-layout';
 // components
 import { MotionContainer, varFade } from 'src/components/animate';
+import { t } from 'i18next';
+
+
+type TextAnimateProps = BoxProps &
+  MotionProps & {
+  text: string;
+};
+
+function TextAnimate({ text, variants, sx, ...other }: TextAnimateProps) {
+  return (
+    <Box
+      component={m.div}
+      sx={{
+        typography: 'h1',
+        overflow: 'hidden',
+        display: 'inline-flex',
+        ...sx,
+      }}
+      {...other}
+    >
+      {text.split('').map((letter, index) => (
+        <m.span key={index} variants={variants || varFade().inUp}>
+          {letter}
+        </m.span>
+      ))}
+    </Box>
+  );
+}
 
 // ----------------------------------------------------------------------
 styled('div')(({ theme }) => ({
@@ -35,23 +61,6 @@ styled('div')(({ theme }) => ({
   position: 'relative',
   [theme.breakpoints.up('md')]: {
     marginTop: HEADER.H_DESKTOP_OFFSET,
-  },
-}));
-const StyledTextGradient = styled(m.h1)(({ theme }) => ({
-  ...textGradient(
-    `300deg, ${theme.palette.primary.main} 0%, ${theme.palette.warning.main} 25%, ${theme.palette.primary.main} 50%, ${theme.palette.warning.main} 75%, ${theme.palette.primary.main} 100%`
-  ),
-  padding: 0,
-  marginTop: 8,
-  lineHeight: 1,
-  marginBottom: 24,
-  letterSpacing: 8,
-  textAlign: 'center',
-  backgroundSize: '400%',
-  fontSize: `${64 / 16}rem`,
-  fontFamily: secondaryFont.style.fontFamily,
-  [theme.breakpoints.up('md')]: {
-    fontSize: `${96 / 16}rem`,
   },
 }));
 styled('div')(({ theme }) => ({
@@ -119,7 +128,6 @@ export default function HomeHero() {
 
   const [percent, setPercent] = useState(0);
 
-  const isLight = theme.palette.mode === 'light';
 
   const getScroll = useCallback(() => {
     let heroHeight = 0;
@@ -139,150 +147,28 @@ export default function HomeHero() {
     getScroll();
   }, [getScroll]);
 
-  const transition = {
-    repeatType: 'loop',
-    ease: 'linear',
-    duration: 60 * 4,
-    repeat: Infinity,
-  } as const;
-
-  const opacity = 1 - percent / 100;
-  (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-      sx={{
-        height: 1,
-        mx: 'auto',
-        maxWidth: 480,
-        opacity: opacity > 0 ? opacity : 0,
-        mt: {
-          md: `-${HEADER.H_DESKTOP + percent * 2.5}px`,
-        },
-      }}
-    >
-      <m.div variants={varFade().in}>
-        <StyledTextGradient
-          animate={{ backgroundPosition: '200% center' }}
-          transition={{
-            repeatType: 'reverse',
-            ease: 'linear',
-            duration: 20,
-            repeat: Infinity,
-          }}
-        >
-          Panda World
-        </StyledTextGradient>
-      </m.div>
-    </Stack>
-  );
-  (
-    <Stack
-      direction="row"
-      alignItems="flex-start"
-      sx={{
-        height: '150%',
-        position: 'absolute',
-        opacity: opacity > 0 ? opacity : 0,
-        transform: `skew(${-16 - percent / 24}deg, ${4 - percent / 16}deg)`,
-        ...(theme.direction === 'rtl' && {
-          transform: `skew(${16 + percent / 24}deg, ${4 + percent / 16}deg)`,
-        }),
-      }}
-    >
-      <Stack
-        component={m.div}
-        variants={varFade().in}
-        sx={{
-          width: 344,
-          position: 'relative',
-        }}
-      >
-        <Box
-          component={m.img}
-          animate={{ y: ['0%', '100%'] }}
-          transition={transition}
-          alt={isLight ? 'light_1' : 'dark_1'}
-          src={
-            isLight
-              ? `/assets/images/home/hero/light_1.webp`
-              : `/assets/images/home/hero/dark_1.webp`
-          }
-          sx={{ position: 'absolute', mt: -5 }}
-        />
-        <Box
-          component={m.img}
-          animate={{ y: ['-100%', '0%'] }}
-          transition={transition}
-          alt={isLight ? 'light_1' : 'dark_1'}
-          src={
-            isLight
-              ? `/assets/images/home/hero/light_1.webp`
-              : `/assets/images/home/hero/dark_1.webp`
-          }
-          sx={{ position: 'absolute' }}
-        />
-      </Stack>
-
-      <Stack
-        component={m.div}
-        variants={varFade().in}
-        sx={{ width: 720, position: 'relative', ml: -5 }}
-      >
-        <Box
-          component={m.img}
-          animate={{ y: ['100%', '0%'] }}
-          transition={transition}
-          alt={isLight ? 'light_2' : 'dark_2'}
-          src={
-            isLight
-              ? `/assets/images/home/hero/light_2.webp`
-              : `/assets/images/home/hero/dark_2.webp`
-          }
-          sx={{ position: 'absolute', mt: -5 }}
-        />
-        <Box
-          component={m.img}
-          animate={{ y: ['0%', '-100%'] }}
-          transition={transition}
-          alt={isLight ? 'light_2' : 'dark_2'}
-          src={
-            isLight
-              ? `/assets/images/home/hero/light_2.webp`
-              : `/assets/images/home/hero/dark_2.webp`
-          }
-          sx={{ position: 'absolute' }}
-        />
-      </Stack>
-    </Stack>
-  );
   return (
-    <Box
-        sx={{
-          ...bgGradient({
-            color: alpha(theme.palette.grey[900], 0.01),
-            imgUrl: '/assets/images/home/hero/new-banner.png',
-          }),
-          height: { md: 800 },
-          py: { xs: 10, md: 0 },
-          overflow: 'hidden',
-          position: 'relative',
-          backgroundPosition: 'top'
-        }}
-      >
-        <Container component={MotionContainer}>
-          <Box
-            sx={{
-              bottom: { md: 80 },
-              position: { md: 'absolute' },
-              textAlign: { xs: 'center', md: 'unset' },
-            }}
-          >
-            <m.div variants={varFade().in}>
-              Panda
-            </m.div>
-          </Box>
-        </Container>
-      </Box>
+    <Box>
+      <div style={{
+        position: 'absolute',
+        width: '730px',
+        height: '270px',
+        maxWidth: '100%',
+        margin: 'auto',
+        ...theme.typography.h2,
+        zIndex: 2,
+        top: '-100px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        textAlign: 'center',
+      }}><h1>Welcome Panda World</h1></div>
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video autoPlay loop muted style={{
+        width: '100%',
+      }}>
+        <source src="/assets/videos/home-video.mp4" type="video/mp4" />
+      </video>
+    </Box>
   );
 }
