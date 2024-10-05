@@ -29,7 +29,7 @@ export const ListItem = styled(ListItemButton, {
   };
 
   return {
-    ...theme.typography.h5,
+    ...theme.typography.h6,
     padding: 0,
     height: '100%',
     color: theme.palette.text.primary,
@@ -94,4 +94,5 @@ export const StyledSubheader = styled(ListSubheader)(({ theme }) => ({
   padding: 0,
   fontSize: 11,
   color: theme.palette.text.primary,
+  display: 'none'
 }));

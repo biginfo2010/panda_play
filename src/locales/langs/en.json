@@ -51,6 +51,7 @@
   "demo": {
     "title": "English"
   },
+
   "app_name": "Panda World",
   "home": "Home",
   "about": "About",
@@ -112,5 +113,46 @@
     "country_required": "Country is required",
     "kyc_form": "KYC Submission Form",
     "submit_kyc": "Submit KYC"
+  },
+  "menu": {
+    "membership": "Membership",
+    "join_pre": "Join Pre-Sale",
+    "member_app": "Member Application",
+    "ico_schedule": "ICO Schedules",
+    "ico_launchpad": "ICO Launchpad Plans",
+    "trading": "Trading Exchanges",
+    "platform": "Platform Launches",
+    "smart_contracts": "Smart Contracts",
+    "pro_info": "Project Information",
+    "white_paper": "White Paper",
+    "tokenomics": "Tokenomics",
+    "dao": "D.A.O.",
+    "road_map": "Road Map",
+    "in_proposal": "Inflationary Proposal",
+    "de_proposal": "Deflationary Proposal",
+    "rewards": "Rewards",
+    "vesting": "Vesting",
+    "staking": "Staking",
+    "purchase": "Purchase Bonus",
+    "referral": "Referral Bonus",
+    "buy_program": "Buy Back Program",
+    "panda_wallet": "Panda Wallet",
+    "entertainment": "Entertainment",
+    "portal": "Game Portal",
+    "links": "Game Links",
+    "mini_games": "Mini Games",
+    "nft": "NFT's",
+    "rainbow": "Rainbow Mint Collection",
+    "digital": "Digital Litho Art",
+    "governance": "Governance",
+    "parental_entity": "Parental Entity",
+    "partnership": "Partnerships",
+    "affiliations": "Affiliations",
+    "joint": "Joint Ventures",
+    "contract": "Contract Agreements",
+    "kyc": "KYC",
+    "faq": "F.A.Q.",
+    "support": "Support"
   }
+
 }

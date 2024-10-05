@@ -1,1 +1,1 @@
-export { default as AboutView } from './about-view';
+export { default as ProjectView } from './about-view';

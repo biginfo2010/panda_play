@@ -74,7 +74,7 @@ export default function HomeHugePackElements() {
         variant="outlined"
         target="_blank"
         rel="noopener"
-        href={paths.components}
+        href="/"
         endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
       >
         View All Components

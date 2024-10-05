@@ -1,1 +1,1 @@
-export { default as AboutView } from './about-view';
+export { default as RewardView } from './about-view';

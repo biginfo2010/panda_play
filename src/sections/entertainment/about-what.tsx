@@ -26,7 +26,7 @@ export const SKILLS = [...Array(3)].map((_, index) => ({
 
 // ----------------------------------------------------------------------
 
-export default function AboutWhat() {
+export default function EntertainmentWhat() {
   const theme = useTheme();
 
   const mdUp = useResponsive('up', 'md');

@@ -1,12 +1,12 @@
 // sections
-import { AboutView } from 'src/sections/about/view';
+import { RewardView } from 'src/sections/reward/view';
 
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'About us',
+  title: 'Reward',
 };
 
 export default function AboutPage() {
-  return <AboutView />;
+  return <RewardView />;
 }

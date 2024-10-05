@@ -1,25 +1,25 @@
 'use client';
 
-import AboutHero from '../about-hero';
-import AboutWhat from '../about-what';
-import AboutTeam from '../about-team';
-import AboutVision from '../about-vision';
-import AboutTestimonials from '../about-testimonials';
+import ProjectHero from '../about-hero';
+import ProjectWhat from '../about-what';
+import ProjectTeam from '../about-team';
+import ProjectVision from '../about-vision';
+import ProjectTestimonials from '../about-testimonials';
 
 // ----------------------------------------------------------------------
 
-export default function AboutView() {
+export default function ProjectView() {
   return (
     <>
-      <AboutHero />
+      <ProjectHero />
 
-      <AboutWhat />
+      <ProjectWhat />
 
-      <AboutVision />
+      <ProjectVision />
 
-      <AboutTeam />
+      <ProjectTeam />
 
-      <AboutTestimonials />
+      <ProjectTestimonials />
     </>
   );
 }

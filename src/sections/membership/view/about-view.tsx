@@ -1,25 +1,25 @@
 'use client';
 
-import AboutHero from '../about-hero';
-import AboutWhat from '../about-what';
-import AboutTeam from '../about-team';
-import AboutVision from '../about-vision';
-import AboutTestimonials from '../about-testimonials';
+import MembershipHero from '../about-hero';
+import MembershipWhat from '../about-what';
+import MembershipTeam from '../about-team';
+import MembershipVision from '../about-vision';
+import MembershipTestimonials from '../about-testimonials';
 
 // ----------------------------------------------------------------------
 
-export default function AboutView() {
+export default function MembershipView() {
   return (
     <>
-      <AboutHero />
+      <MembershipHero />
 
-      <AboutWhat />
+      <MembershipWhat />
 
-      <AboutVision />
+      <MembershipVision />
 
-      <AboutTeam />
+      <MembershipTeam />
 
-      <AboutTestimonials />
+      <MembershipTestimonials />
     </>
   );
 }

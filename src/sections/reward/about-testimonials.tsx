@@ -25,7 +25,7 @@ import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function AboutTestimonials() {
+export default function RewardTestimonials() {
   const theme = useTheme();
 
   const mdUp = useResponsive('up', 'md');

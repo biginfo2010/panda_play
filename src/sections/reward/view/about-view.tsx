@@ -1,25 +1,25 @@
 'use client';
 
-import AboutHero from '../about-hero';
-import AboutWhat from '../about-what';
-import AboutTeam from '../about-team';
-import AboutVision from '../about-vision';
-import AboutTestimonials from '../about-testimonials';
+import RewardHero from '../about-hero';
+import RewardWhat from '../about-what';
+import RewardTeam from '../about-team';
+import RewardVision from '../about-vision';
+import RewardTestimonials from '../about-testimonials';
 
 // ----------------------------------------------------------------------
 
-export default function AboutView() {
+export default function RewardView() {
   return (
     <>
-      <AboutHero />
+      <RewardHero />
 
-      <AboutWhat />
+      <RewardWhat />
 
-      <AboutVision />
+      <RewardVision />
 
-      <AboutTeam />
+      <RewardTeam />
 
-      <AboutTestimonials />
+      <RewardTestimonials />
     </>
   );
 }

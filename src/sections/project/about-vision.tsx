@@ -13,7 +13,7 @@ import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function AboutVision() {
+export default function ProjectVision() {
   const theme = useTheme();
 
   const renderImg = (

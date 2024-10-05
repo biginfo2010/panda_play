@@ -18,7 +18,7 @@ import Carousel, { CarouselArrows, useCarousel } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function AboutTeam() {
+export default function EntertainmentTeam() {
   const carousel = useCarousel({
     infinite: false,
     slidesToShow: 4,
